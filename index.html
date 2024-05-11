@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: black;
+        padding: 10px 20px;
+        position: relative;
+        z-index: 999;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .nav-links a {
+        color: gray;
+        text-decoration: none;
+        margin: 0 10px;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+
+      .nav-links a:hover {
+        color: black;
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+      }
+
+      .signin-btn {
+        color: gray;
+        background-color: transparent;
+        padding: 8px 16px;
+        border-radius: 5px;
+        margin-right: 10px;
+        text-decoration: none;
+      }
+
+      .signup-btn {
+        color: white;
+        background-color: #4e47ff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+      }
+      .lighting-image-container {
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+      }
+
+      .lighting-image {
+        width: 100%;
+        filter: blur(10px);
+      }
+
+      .lighting-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 1;
+      }
+
+      .get-in-touch-btn {
+        padding: 10px 20px;
+        background-color: black;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .get-in-touch-btn:hover {
+        background-color: #333;
+      }
+      .what-we-do {
+        margin-top: 83vh;
+        padding: 16px;
+        background-color: #f0f0f0;
+      }
+
+      .what-we-do h2 {
+        margin-bottom: 20px;
+      }
+
+      .what-we-do-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .what-we-do-item {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      .what-we-do-item p{
+        color: gray;
+      }
+
+
+
+
+
+
+      .get-in-touch {
+        background-color: #fff;
+        padding: 50px 0;
+    }
+    
+    .form-container {
+        width: 100%;
+        max-width: 600px;
+    }
+    
+    .form-container form {
+        width: 100%;
+    }
+    
+    .form-container input,
+    .form-container textarea,
+    .form-container button {
+        width: 100%;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+    .footer{
+        width: 80%;
+        margin: auto;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="logo">
+        <img src="./logo.png" />
+        <span style="color: white">&nbsp; FasterUI </span>
+      </div>
+      <div class="nav-links">
+        <a href="#" style="color: black; font-weight: 600">Home</a>
+        <a href="#">About</a>
+        <a href="#">How it Works</a>
+        <a href="#">Services</a>
+      </div>
+      <div class="buttons">
+        <a href="#" class="signin-btn">Sign In</a>
+        <a href="#" class="signup-btn">Sign Up</a>
+      </div>
+    </div>
+
+    <div class="lighting-image-container">
+      <img
+        style="height: 90vh"
+        src="data:image/jpeg;base64,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"
+        alt="Lighting Image"
+        class="lighting-image"
+      />
+      <div class="lighting-text">
+        <h2 style="color: black">
+          Awesome UI Dark Template <br />
+          for Webflow Agency
+        </h2>
+        <a href="#" class="get-in-touch-btn">Get in Touch</a>
+      </div>
+    </div>
+
+    <section class="what-we-do">
+      <h2>What We Do</h2>
+      <div class="what-we-do-grid">
+        <div class="what-we-do-item">
+            <img src="./1.png" style="background-color: #f0f0f0;padding: 7px;border-radius: 4px;"/>
+            <h3>Web Design</h3>
+            <p>From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.</p>
+        </div>
+        <div class="what-we-do-item">  
+            <img src="./2.png" style="background-color: #f0f0f0;padding: 7px;border-radius: 4px;"/>
+            <h3>UI/UX Design</h3>
+            <p>From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.</p>
+        </div>
+        <div class="what-we-do-item">
+            <img src="./3.png" style="background-color: #f0f0f0;padding: 7px;border-radius: 4px;"/>
+            <h3>Responsive Design</h3>
+            <p>From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.</p>
+        </div>
+        <div
+          class="what-we-do-item"
+          style="grid-column: 4 / 5; grid-row: 1 / 3"
+        >
+        <img src="./4.png" style="background-color: #f0f0f0;padding: 7px;border-radius: 4px;"/>
+        <h3>E-commerce Solutions:</h3>
+        <p>From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.</p>
+        <div style="display: flex;justify-content:center">
+            <img src="./image.png" style="width: 90%;height: 257px;"/>
+        </div>
+        </div>
+        <div class="what-we-do-item" style="grid-column: 1 / 3;display: grid;grid-template-columns: 60% 40%;">
+            <div>  
+                <img src="./5.png" style="background-color: #f0f0f0;padding: 7px;border-radius: 4px;"/>
+                <h3>Webflow</h3>
+                <p>From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.</p>
+            </div>
+            <div style="background-color: #5B54FF;display: flex;justify-content: center;align-items: center;border-radius: 7px;">
+                <img src="./7.png"/>
+            </div>
+        </div>
+        <div class="what-we-do-item">
+            <img src="./6.png" style="background-color: #f0f0f0;padding: 7px;border-radius: 4px;"/>
+            <h3>Custom Development</h3>
+            <p>From concept to launch, we create stunning, user-centric websites that elevate your brand and engage your audience.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="check-our-work">
+        <div>
+            <div style="display: flex;align-items: center;justify-content: space-around;">
+                <div style="background-color: white;padding: 12px;border-radius: 30px;">
+                    <img src="./left.png"/>
+                </div>
+                <div>
+                    <h1 style="text-align: center;">Check our Work</h1>
+                    <p style="text-align: center;">Take a look at some of our recent projects to see how <br/>we've helped businesses like yours succeed online.</p>
+                </div>
+                <div style="background-color: white;padding: 12px;border-radius: 30px;">
+                    <img src="./right.png"/>
+                </div>
+            </div>
+            <div class="image-container" style="display: flex; margin-top:30px">
+                <div class="left-image" style="width: 20%;">
+                    <img src="./l.png" alt="Left Image" style="max-width: 100%;">
+                </div>
+                <div class="middle-image" style="width: 60%; text-align: center;">
+                    <img src="./m.png" alt="Middle Image" style="max-width: 100%;">
+                </div>
+                <div class="right-image" style="width: 20%;">
+                    <img src="./r.png" alt="Right Image" style="max-width: 100%;">
+                </div>
+        </div>
+    </section>
+
+    <section class="get-in-touch" style="background-color: #ffffff; padding: 50px 0;">
+        <h1 class="text-center" style="font-size: 3rem; font-weight: bold; margin-bottom: 1.5rem;">Let’s Get in Touch</h1>
+        <div class="form-container" style="width: 100%; max-width: 600px; margin: 0 auto;">
+            <form style="width: 100%;">
+                <div class="mb-4" style="margin-bottom: 1rem;">
+                    <label for="email" class="block mb-2" style="display: block; margin-bottom: 0.5rem;">Email</label>
+                    <input type="email" id="email" placeholder="example@email.com" name="email" class="border border-gray-400 px-4 py-2 rounded-md" style="width: 100%; border-radius: 0.25rem; padding: 0.5rem; border: 1px solid #ccc;" required>
+                </div>
+                <div class="mb-4" style="margin-bottom: 1rem;">
+                    <label for="name" class="block mb-2" style="display: block; margin-bottom: 0.5rem;">Name</label>
+                    <input type="text" id="name" placeholder="full name" name="name" class="border border-gray-400 px-4 py-2 rounded-md" style="width: 100%; border-radius: 0.25rem; padding: 0.5rem; border: 1px solid #ccc;" required>
+                </div>
+                <div class="mb-4" style="margin-bottom: 1rem;">
+                    <label for="message" class="block mb-2" style="display: block; margin-bottom: 0.5rem;">Message</label>
+                    <textarea id="message" name="message" placeholder="write your message...." rows="4" class="border border-gray-400 px-4 py-2 rounded-md" style="width: 100%; border-radius: 0.25rem; padding: 0.5rem; border: 1px solid #ccc;" required></textarea>
+                </div>
+                <button type="submit" class="bg-white text-black px-6 py-3 rounded-md" style="width: 100%; background-color: #4E47FF; color: white; border-radius: 0.25rem; padding: 0.75rem; border: none;">Get In Touch</button>
+            </form>
+        </div>
+    </section>
+    
+    
+    <section class="footer" style="margin-bottom: 50px;">
+        <div style="display: flex;align-items: center;justify-content: space-around;padding:20px;background-color:white;margin-top:30px;border-radius:7px;">
+            <div>
+                <div class="logo">
+                    <img src="./logo.png" />
+                    <span >&nbsp; FasterUI </span>
+                  </div>
+                  <p>Ready to elevate your online presence? Contact us today <br/> to discuss your project and discover how <br/>we can bring your vision to life.</p>
+                  <p>&#9825; Made with love powered by inkyy.com</p>
+            </div>
+            <div>
+                <div class="nav-links">
+                    <a href="#" >Home</a>
+                    <a href="#">About</a>
+                    <a href="#">How it Works</a>
+                    <a href="#">Services</a>
+                  </div>
+                  <div class="nav-links" style="justify-content: space-evenly;">
+                    <img src="./insta.png"/>
+                    <img src="./link.png"/>
+                    <img src="./tik.png"/>
+                    <img src="./ball.png"/>
+                  </div>
+            </div>
+        </div>
+    </section>
+  </body>
+</html>
